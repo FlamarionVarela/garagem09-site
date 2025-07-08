@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garagem 09 - Especialistas em Veículos de Luxo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Configurações Gerais e Cores --- */
+        :root {
+            --cor-fundo: #121212;
+            --cor-fundo-secundario: #1a1a1a;
+            --cor-texto: #e0e0e0;
+            --cor-vermelho: #ff0000;
+            --cor-branco: #ffffff;
+            --fonte-logo: 'Playfair Display', serif;
+            --fonte-corpo: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            font-family: var(--fonte-corpo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--cor-branco);
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--cor-vermelho);
+            margin: 8px auto 0;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--cor-vermelho);
+            margin-bottom: 15px;
+        }
+        
+        /* --- Seção Hero (Topo) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1617531322474-32f2b76735c0?q=80&w=2070&auto=format&fit=crop'); /* Imagem de fundo de um carro de luxo */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px; /* Reduz espaço abaixo da logo */
+        }
+        
+        .hero-logo img {
+            height: 235px; /* 168px + 40% = 235px */
+            width: auto;
+            max-width: 784px; /* 560px + 40% = 784px */
+            filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.5));
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-top: 0px; /* Remove margem superior */
+            margin-bottom: 25px; /* Ajusta espaço para o botão */
+            font-weight: 300;
+            color: #e0e0e0;
+            animation: typewriter-cycle 20s steps(50) infinite, blink 1s infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #ff0000;
+        }
+
+        @keyframes typewriter-cycle {
+            0% {
+                width: 0;
+            }
+            5% {
+                width: 0;
+            }
+            45% {
+                width: 100%;
+            }
+            95% {
+                width: 100%;
+            }
+            100% {
+                width: 0;
+            }
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                border-right-color: #ff0000;
+            }
+            51%, 100% {
+                border-right-color: transparent;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 15px; /* Reduz margem superior do botão */
+            padding: 15px 30px;
+            background-color: var(--cor-vermelho);
+            color: var(--cor-branco);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid var(--cor-vermelho);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--cor-vermelho);
+        }
+
+        /* --- Seções Padrão --- */
+        section {
+            padding: 60px 0;
+            background-color: var(--cor-fundo-secundario);
+        }
+        
+        section:nth-of-type(odd){
+            background-color: var(--cor-fundo);
+        }
+
+        /* --- Sobre Nós --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-content img {
+            width: 100%;
+            border-radius: 5px;
+            object-fit: cover;
+            height: 400px;
+        }
+
+        /* --- Serviços --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: var(--cor-fundo);
+            padding: 30px;
+            border: 1px solid #2a2a2a;
+            border-left: 4px solid var(--cor-vermelho);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .service-item h4 {
+            font-size: 1.4rem;
+            color: var(--cor-branco);
+            margin-bottom: 10px;
+        }
+        
+        /* --- Especialidade Audi --- */
+        .specialty {
+            text-align: center;
+            background-image: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)), url('https://images.unsplash.com/photo-1547948297-b84433d06e3e?q=80&w=1964&auto=format&fit=crop'); /* Fundo sutil de grade */
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .specialty p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* --- Contato --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info strong {
+            color: var(--cor-vermelho);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: 0;
+            filter: invert(100%) grayscale(80%);
+        }
+        
+        /* --- Rodapé --- */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            max-width: 200px;
+        }
+        
+        .payment-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .payment-info strong {
+            color: var(--cor-vermelho);
+        }
+        
+        .copyright {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .hero-logo img { 
+                height: 157px; /* 112px + 40% = 157px */
+                max-width: 588px; /* 420px + 40% = 588px */
+            }
+            .hero-subtitle { font-size: 1.2rem; }
+            h2 { font-size: 2rem; }
+            .about-content, .contact-grid { grid-template-columns: 1fr; }
+            .about-content img {
+                height: 300px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-logo">
+            <img src="logo-garagem09.png" alt="Garagem 09" onload="console.log('Logo carregada com sucesso!')" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-family: Special Elite, monospace; font-size: 4rem; color: white; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); margin: 0;\'>G A R A G E M   0 9</div>';">
+        </div>
+        <p class="hero-subtitle">A Vanguarda no Cuidado do Seu Veículo Premium.</p>
+        <a href="#contato" class="cta-button">Agende seu Serviço</a>
+    </header>
+
+    <main>
+        <section id="sobre">
+            <div class="container">
+                <h2>Nossa Filosofia</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>A Garagem 09 não é apenas uma oficina. É onde veículos que representam o melhor da engenharia e design automotivo recebem o cuidado que merecem.</p>
+                        <br>
+                        <p>Aqui, a paixão por precisão e desempenho se traduz em serviços meticulosos – executados com expertise técnica e total respeito pelo seu investimento.</p>
+                        <br>
+                        <p>Cada detalhe é tratado com excelência, porque seu carro exige nada menos que perfeição.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1553787762-b5f372136484?q=80&w=1964&auto=format&fit=crop" alt="Mecânico especializado trabalhando em um carro de luxo">
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos">
+            <div class="container">
+                <h2>Serviços de Alta Performance</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h4>Diagnóstico Avançado</h4>
+                        <p>Análise completa com sistemas eletrônicos e softwares originais das montadoras para uma precisão absoluta.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Revisões Programadas</h4>
+                        <p>Seguimos rigorosamente as especificações do fabricante para manter a garantia e a performance do seu veículo.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Freios e Suspensão</h4>
+                        <p>Manutenção e upgrades em sistemas de freios de alta performance e suspensões (pneumáticas, magnéticas e esportivas).</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Motor e Transmissão</h4>
+                        <p>Serviços especializados em motores de alta cilindrada e transmissões automatizadas como a S-Tronic.</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Performance e Estética</h4>
+                        <p>Instalação de kits de performance, escapes esportivos e detalhes estéticos que elevam a exclusividade do seu carro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="especialidade" class="specialty">
+            <div class="container">
+                <h3>Nossa Especialidade: A Excelência Alemã</h3>
+                <p>Nossa filosofia de trabalho ecoa a busca pela vanguarda tecnológica. Por isso, temos uma devoção especial pela Audi. Entendemos a complexidade e a beleza de cada sistema, desde a tração integral <strong>quattro</strong> que redefine a aderência, até a resposta imediata de um motor <strong>TFSI</strong> e a inteligência de uma transmissão <strong>S-Tronic</strong>.</p>
+                <p>Seja para a manutenção de um A3 ou a preparação de um RS, nossa equipe possui o know-how para extrair o máximo que a engenharia de Ingolstadt pode oferecer.</p>
+            </div>
+        </section>
+
+        <section id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Garagem 09</h3>
+                        <p><strong>Endereço:</strong><br> R. Morro Branco, 09 - Vila de Ponta Negra, Natal - RN, 59090-572</p>
+                        <p><strong>Telefone & WhatsApp:</strong><br> (84) 99999-0909</p>
+                        <p><strong>E-mail:</strong><br> contato@garagem09.com.br</p>
+                        <p><strong>Horário:</strong><br> Seg-Sex: 08h - 18h | Sáb: 09h - 13h</p>
+                    </div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.184!2d-35.1753426!3d-5.8903595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff8d2c4a8d5b%3A0x123456789abcdef!2sR.%20Morro%20Branco%2C%2009%20-%20Ponta%20Negra%2C%20Natal%20-%20RN%2C%2059090-572%2C%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1706703600000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <img src="logo-garagem09.png" alt="Garagem 09" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-family: Special Elite, monospace; font-size: 1.5rem; color: white; letter-spacing: 2px; margin: 0;\'>G A R A G E M   0 9</div>';">
+            </div>
+            <div class="payment-info">
+                CONDIÇÕES DE PAGAMENTO:<br>
+                Para sua conveniência, oferecemos <strong>5% de desconto</strong> para pagamentos via <strong>PIX ou espécie</strong>.<br>
+                Aceitamos cartões de crédito com parcelamento (juros da operadora por conta do cliente).
+            </div>
+            <p class="copyright">© 2025 | Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
